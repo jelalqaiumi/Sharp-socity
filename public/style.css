@@ -303,9 +303,9 @@ body {
 
 .reviews-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 1rem;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 1.25rem;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -347,9 +347,9 @@ body {
 
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.2rem;
-    max-width: 1100px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+    max-width: 1400px;
     margin: 0 auto 1rem auto;
 }
 
@@ -376,6 +376,16 @@ body {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* Ensure images inside cards expand nicely when grid gets larger */
+.review-card img,
+.staff-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
 }
 
 .staff-role {
