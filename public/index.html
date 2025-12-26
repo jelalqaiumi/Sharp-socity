@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sharp Society - Frisörsalong</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Cinzel font (resembles Trajan Pro) as fallback if Trajan Pro isn't installed -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo"><img src="SHARP2.JPG" alt="Sharp Society"></div>
-            <ul class="nav-links">
-                <li><a href="#home">Hem</a></li>
-                <li><a href="#services">Tjänster</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#booking">Boka tid</a></li>
-                <li><a href="#admin">Admin</a></li>
-            </ul>
+    <!-- Sidmeny -->
+    <nav class="sidebar">
+        <div class="sidebar-logo">
+            <img src="SHARP2.JPG" alt="Sharp Society logo" class="logo-img">
         </div>
+        <ul class="nav-links">
+            <li><a href="#home">OM OSS</a></li>
+            <li><a href="#team">VÅRT TEAM</a></li>
+            <li><a href="#booking">BOKA TID</a></li>
+            <li><a href="#products">PRODUKTER</a></li>
+        </ul>
     </nav>
 
     <!-- Hero Section -->
@@ -35,152 +37,78 @@
                 <button class="slide-next" aria-label="Nästa">›</button>
                 <div class="slide-dots" id="slide-dots"></div>
             </div>
-            <h1>Sharp Society</h1>
-            <p>Din moderna frisörsalong</p>
-            <a href="#booking" class="btn btn-primary">Boka tid nu</a>
-        </div>
-    </section>
-
-    <!-- Recensioner -->
-    <section id="reviews" class="reviews">
-        <div class="container">
-            <h2>Om oss</h2>
-            <div id="reviews-list" class="reviews-grid">
-                <p>Hämtar omdömen…</p>
+            <div class="hero-text">
+                <h1>SHARP SOCIETY</h1>
+                <p class="tagline">Frisör</p>
+                <p class="subtitle"></p>
+                <a href="#booking" class="btn btn-primary">Boka tid</a>
             </div>
         </div>
     </section>
 
+    <!-- Recensioner / Om oss -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <h2>OM OSS</h2>
+            <p style="text-align: center; color: var(--text-color); margin-bottom: 40px; font-size: 1.1rem; line-height: 1.8;">
+                Sharp Society är en modern barbershop och frisering som sätter kvalitet och service i första rummet.<br>
+                Med skicklig barberare, noggrannhet i varje detalj och en avslappnad atmosfär erbjuder vi klippningar och behandlingar på högsta nivå.<br>
+                Här står kundens stil och upplevelse i fokus – alltid med ett skarpt resultat och professionell service.
+            </p>
+        </div>
+    </section>
 
     <!-- Team / Personal -->
     <section id="team" class="team">
         <div class="container">
-            <h2>Vårt team</h2>
+            <h2>VÅRT TEAM</h2>
             <div class="team-grid">
                 <div class="staff-card">
                     <div class="staff-image">
-                        <img src="team/placeholder.svg" alt="Profilbild - Alex Dakermanji">
+                        <img src="team/alex.jpg" alt="Alex Dakermanji - Frisör">
                     </div>
-                    <h3>Förnamn Efternamn</h3>
+                    <h3>Alex Dakermanji</h3>
                     <p class="staff-role">Frisör</p>
                 </div>
                 <!-- Kopiera .staff-card och lägg till fler profiler här -->
             </div>
-            <p class="team-note">Lägg till profilbilder i mappen <code>public/team/</code> och ersätt placeholder-bilden med dina bilder.</p>
+            <p class="team-note"> <code></code> </p>
         </div>
     </section>
 
 
-    <!-- Tjänster -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2>Våra tjänster</h2>
-            <div id="services-list" class="services-grid">
-                <!-- Tjänster läses in med JavaScript -->
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Bokningssystem -->
     <section id="booking" class="booking">
         <div class="container">
-            <h2>Boka din tid</h2>
-            <div class="booking-redirect">
-                <p>Boka enkelt och smidigt genom vår onlinebokningssystem</p>
-                <a href="https://sharpsocietyuf.setmore.com/" target="_blank" class="btn btn-primary btn-large">
-                    🗓️ Boka tid direkt
-                </a>
-            </div>
-            <form id="booking-form" class="booking-form" style="display: none;">
-                <div class="form-group">
-                    <label for="name">Namn *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Telefon *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="service">Tjänst *</label>
-                    <select id="service" name="service" required>
-                        <option value="">Välj tjänst</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="date">Datum *</label>
-                    <input type="date" id="date" name="date" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="time">Tid *</label>
-                    <select id="time" name="time" required>
-                        <option value="">Välj tid</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="notes">Anteckningar</label>
-                    <textarea id="notes" name="notes" rows="3"></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Bekräfta bokning</button>
-                <div id="booking-message" class="message"></div>
-            </form>
-
-            <div id="available-times" class="available-times" style="display: none;">
-                <h3>Lediga tider:</h3>
-                <div id="times-list"></div>
+            <h2>BOKA TID</h2>
+            <div class="setmore-embed">
+                <iframe 
+                    src="https://sharpsocietyuf.setmore.com/book" 
+                    style="width: 100%; min-height: 700px; border: none; border-radius: 8px;"
+                    allow="payment"
+                    title="Sharp Society Bokningssystem">
+                </iframe>
             </div>
         </div>
     </section>
 
-    <!-- Admin Panel -->
-    <section id="admin" class="admin">
+    <!-- Produkter Section (Optional) -->
+    <section id="products" class="services">
         <div class="container">
-            <h2>Administratörsvy</h2>
-            <div class="admin-controls">
-                <input type="date" id="admin-date" placeholder="Välj datum">
-                <button onclick="loadBookingsForAdmin()" class="btn btn-secondary">Visa bokningar</button>
-            </div>
-            <table id="bookings-table" class="bookings-table" style="display: none;">
-                <thead>
-                    <tr>
-                        <th>Namn</th>
-                        <th>Email</th>
-                        <th>Telefon</th>
-                        <th>Tjänst</th>
-                        <th>Datum</th>
-                        <th>Tid</th>
-                        <th>Anteckningar</th>
-                        <th>Åtgärd</th>
-                    </tr>
-                </thead>
-                <tbody id="bookings-tbody">
-                </tbody>
-            </table>
-            <div id="admin-message" class="message"></div>
+            <h2>PRODUKTER</h2>
+            <p style="text-align: center; color: var(--text-color); margin: 40px 0;">
+                Besök vår salong för information om våra produkter
+            </p>
         </div>
     </section>
+
 
     <footer>
-        <p>&copy; 2025 Sharp Society - Din frisörsalong. Alla rättigheter förbehållna.</p>
+        <p>&copy; 2025 Sharp Society - Alla rättigheter förbehållna.</p>
     </footer>
 
     <script src="script.js"></script>
 </body>
 </html>
-cd C:\Users\qaium\source\repos\Sharp-socity
-git init
-git add .
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin https://github.com/<ditt-användarnamn>/<repo-namn>.git
-git push -u origin main

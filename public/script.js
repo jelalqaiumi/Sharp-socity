@@ -4,7 +4,31 @@ const API_BASE = 'http://localhost:3000/api';
 document.addEventListener('DOMContentLoaded', () => {
     loadServices();
     setMinDate();
+    initNavigation();
 });
+
+// Initialize navigation - highlight active link
+function initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        
+        document.querySelectorAll('section').forEach(section => {
+            const sectionTop = section.offsetTop;
+            if (pageYOffset >= sectionTop - 60) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+}
 
 // Premium slideshow for hero
 function initSlideshow() {
