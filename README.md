@@ -94,3 +94,6 @@ Du kan enkelt anpassa:
 - **Salong namn:** Uppdatera "Sharp Society" överallt
 
 Lycka till med din frisörsalong! 💇‍♀️✂️
+=======
+# Sharp-socity
+>>>>>>> be5d44032dcc9846f82f469be3e2cfd7d47a67f7
