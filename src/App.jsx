@@ -178,25 +178,9 @@ function EmblaHeroCarousel() {  const heroImages = [
     '/slideshow/5.JPG',
   ];
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
   const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((idx) => emblaApi && emblaApi.scrollTo(idx), [emblaApi]);
-
-  // Update selected index on slide change
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
-
-  // Listen for slide change
-  React.useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on('select', onSelect);
-    onSelect();
-    return () => emblaApi.off('select', onSelect);
-  }, [emblaApi, onSelect]);
 
   return (
     <div className="slideshow" style={{ maxWidth: 420, margin: '0 auto', position: 'relative', borderRadius: 18, boxShadow: '0 6px 32px rgba(0,0,0,0.18)' }}>
@@ -209,28 +193,10 @@ function EmblaHeroCarousel() {  const heroImages = [
           ))}
         </div>
       </div>
-      <button className="slide-prev" aria-label="Föregående" onClick={scrollPrev} style={{ left: 20, position: 'absolute', top: '50%', transform: 'translateY(-50%)', zIndex: 3 }}>‹</button>
-      <button className="slide-next" aria-label="Nästa" onClick={scrollNext} style={{ right: 20, position: 'absolute', top: '50%', transform: 'translateY(-50%)', zIndex: 3 }}>›</button>
-      <div className="slide-dots" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: 20, display: 'flex', gap: 12, zIndex: 3 }}>
-        {heroImages.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => scrollTo(idx)}
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: '50%',
-              border: '2px solid var(--accent-color)',
-              background: idx === selectedIndex ? 'var(--accent-color)' : 'rgba(201, 169, 98, 0.3)',
-              transform: idx === selectedIndex ? 'scale(1.2)' : 'scale(1)',
-              transition: 'all 0.3s',
-              cursor: 'pointer',
-              boxShadow: idx === selectedIndex ? '0 0 12px rgba(201, 169, 98, 0.5)' : undefined
-            }}
-            aria-label={`Gå till bild ${idx + 1}`}
-          />
-        ))}
-      </div>
+
+      <button className="slide-prev" aria-label="Föregående" onClick={scrollPrev}>‹</button>
+      <button className="slide-next" aria-label="Nästa" onClick={scrollNext}>›</button>
+
     </div>
   );
 }

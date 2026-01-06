@@ -40,7 +40,7 @@ body {
     top: 0;
     width: 200px;
     height: 100vh;
-    background-color: #090909;
+    background-color: #000000;
     padding: 40px 30px;
     text-align: center;
     z-index: 1000;
@@ -169,14 +169,14 @@ body {
     backdrop-filter: blur(10px);
     color: var(--accent-color);
     border: 2px solid var(--accent-color);
-    width: 52px;
-    height: 52px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 28px;
+    font-size: 22px;
     font-weight: 300;
     transition: all 0.3s ease;
     z-index: 3;
@@ -188,39 +188,10 @@ body {
     transform: translateY(-50%) scale(1.1);
 }
 
-.slide-prev { left: 20px; }
-.slide-next { right: 20px; }
+.slide-prev { left: 16px; }
+.slide-next { right: 16px; }
 
-.slide-dots {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 20px;
-    display: flex;
-    gap: 12px;
-    z-index: 3;
-}
-
-.slide-dots button {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    border: 2px solid var(--accent-color);
-    background: rgba(201, 169, 98, 0.3);
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.slide-dots button:hover {
-    background: var(--accent-color);
-    transform: scale(1.2);
-}
-
-.slide-dots button.active {
-    background: var(--accent-color);
-    border-color: var(--accent-light);
-    box-shadow: 0 0 12px rgba(201, 169, 98, 0.5);
-}
+.slide-dots { display: none !important; }
 
 .hero-text {
     padding: 60px 40px;
@@ -659,11 +630,10 @@ footer {
         font-size: 20px;
     }
 
-    .slide-prev { left: 10px; }
-    .slide-next { right: 10px; }
+    .slide-prev { left: 12px; }
+    .slide-next { right: 12px; }
 
-    .slide-dots { bottom: 12px; gap: 6px; }
-    .slide-dots button { width: 9px; height: 9px; }
+    .slide-dots { display: none !important; }
 
     /* Sections */
     .reviews,
@@ -801,5 +771,71 @@ footer {
 
     .admin-controls button {
         width: 100%;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 600px) {
+    body {
+        margin-left: 0;
+        font-size: 13px;
+    }
+
+    .container {
+        padding: 0 10px;
+    }
+
+    .hero-content {
+        gap: 14px;
+        max-width: 100%;
+        padding: 0 6px 12px 6px;
+    }
+
+    .slideshow {
+        height: 200px;
+        max-width: 100%;
+    }
+
+    .embla__slide {
+        height: 200px !important;
+    }
+
+    .hero-text {
+        padding: 20px 8px 0 8px;
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .hero-text .tagline {
+        font-size: 0.95rem;
+    }
+
+    .btn {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+    }
+
+    .services, .team, .booking, .reviews {
+        padding: 28px 0;
+    }
+
+    iframe {
+        max-width: 100%;
+    }
+
+    .slide-prev, .slide-next {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+        left: 10px;
+        right: 10px;
+    }
+
+    .staff-image {
+        width: 110px;
+        height: 110px;
     }
 }
