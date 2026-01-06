@@ -1,17 +1,49 @@
-import { useState, useCallback } from 'react'
-import useEmblaCarousel from 'embla-carousel-react'
+import React, { useEffect, useRef } from 'react'
+import { AiFillTikTok, AiOutlineHeart, AiFillInstagram } from 'react-icons/ai'
+import { TiSocialInstagram } from "react-icons/ti"; 
 import './App.css'
-import React from 'react'
-function App() {
-  const [count, setCount] = useState(0)
 
+function App() {
+  const videos = [
+    '/video1.mp4',
+    '/video2.mp4',
+    '/video3.mp4',
+  ]
+
+  const heroVideos = videos.map((src, idx) => {
+    const meta = [
+      { videos: '/video1.mp4', title: 'Fade detailing' },
+      { videos: '/video2.mp4', title: 'Studio cut' },
+      { videos: '/video3.mp4', title: 'Curl taper' },
+    ]
+    return { src, ...meta[idx] }
+  })
 
   return (
     <>
-
       <nav className='sidebar'>
         <div className="sidebar-logo">
           <img src="SHARP2.JPG" alt="Sharp Society logo" className="logo-img" />
+          <a
+            href="https://www.tiktok.com/search?q=sharp.soc1ety&t=1767707103942"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Följ oss på TikTok"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--accent-color)', marginTop: 12 }}
+          >
+            <AiFillTikTok size={26} />
+            <span style={{ fontSize: 14 }}>TikTok</span>
+          </a>
+          <a
+            href="https://www.instagram.com/sharp.soc1ety/"
+            target="_blank"
+            rel="noreferrer"
+            aria-label="Följ oss på Instagram"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'var(--accent-color)', marginTop: 8 }}
+          >
+            <AiFillInstagram size={26} />
+            <span style={{ fontSize: 14 }}>Instagram</span>
+          </a>
         </div>
         <ul className="nav-links">
           <li><a href="#products">PRODUKTER</a></li>
@@ -21,13 +53,22 @@ function App() {
         </ul>
       </nav>
 
-
       <section id="home" className="hero">
         <div className="hero-content">
-          <EmblaHeroCarousel />
-
-
-
+          <div className="hero-media" style={{ flex: 1 }}>
+            <div style={{ color: 'var(--text-color)', fontWeight: 700, fontSize: 20, marginBottom: 12 }}>Videor</div>
+            <div className="video-row">
+              {heroVideos.map((video) => (
+                <VideoCard
+                  key={video.src}
+                  src={video.src}
+                  poster={video.poster}
+                  title={video.title}
+                  likes={video.likes}
+                />
+              ))}
+            </div>
+          </div>
 
           <div className="hero-text">
             <h1>SHARP SOCIETY</h1>
@@ -42,9 +83,9 @@ function App() {
         <div className="container">
           <h2>PRODUKTER</h2>
           <p style={{
-            textAlign: "center",
-            color: "var(--text-color)",
-            margin: "40px 0",
+            textAlign: 'center',
+            color: 'var(--text-color)',
+            margin: '40px 0',
           }}>
             Besök vår salong för information om våra produkter
           </p>
@@ -62,15 +103,10 @@ function App() {
               <h3>Alex Dakermanji</h3>
               <p className="staff-role">Frisör</p>
             </div>
-
           </div>
           <p className="team-note"> <code></code> </p>
         </div>
       </section>
-
-
-
-
 
       <section id="booking" className="booking">
         <div className="container">
@@ -79,10 +115,10 @@ function App() {
             <iframe
               src="https://sharpsocietyuf.setmore.com/book"
               style={{
-                width: "100%",
-                minHeight: "700px",
-                border: "none",
-                borderRadius: "8px",
+                width: '100%',
+                minHeight: '700px',
+                border: 'none',
+                borderRadius: '8px',
               }}
               allow="payment"
               title="Sharp Society Bokningssystem">
@@ -91,147 +127,148 @@ function App() {
         </div>
       </section>
 
-
       <section id="reviews" className="reviews">
         <div className="container">
           <h2>OM OSS</h2>
           <p style={{
-            textAlign: "center",
-            color: "var(--text-color)",
-            marginBottom: "40px",
-            fontSize: "1.1rem",
-            lineHeight: 1.8
+            textAlign: 'center',
+            color: 'var(--text-color)',
+            marginBottom: '40px',
+            fontSize: '1.1rem',
+            lineHeight: 1.8,
           }}>
             Sharp Society är en modern barbershop och frisering som sätter kvalitet och service i första rummet.<br />
             Med skicklig barberare, noggrannhet i varje detalj och en avslappnad atmosfär erbjuder vi klippningar och behandlingar på högsta nivå.<br />
-            Här står kundens stil och upplevelse i fokus – alltid med ett skarpt resultat och professionell service.
+            Här står kundens stil och upplevelse i fokus  alltid med ett skarpt resultat och professionell service.
           </p>
           <div className="review-list" style={{
-            display: "flex",
-            flexWrap: "wrap",
-            gap: "24px",
-            justifyContent: "center",
-            marginBottom: "24px"
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '24px',
+            justifyContent: 'center',
+            marginBottom: '24px',
           }}>
             <div className="review-card" style={{
-              background: "#fdfcfc",
-              borderRadius: "10px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
-              padding: "18px 22px",
-              maxWidth: "320px",
-              minWidth: "220px"
+              background: '#fdfcfc',
+              borderRadius: '10px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+              padding: '18px 22px',
+              maxWidth: '320px',
+              minWidth: '220px',
             }}>
-              <div style={{ color: "#FFD700", fontSize: "1.2rem", marginBottom: "6px" }}>★★★★★</div>
-              <div style={{ fontStyle: "italic", color: "#333" }}>“Bästa klippningen jag fått! Supernöjd med resultatet och bemötandet.”</div>
-              <div style={{ marginTop: "8px", color: "#888", fontSize: "0.95em" }}>– Erik S.</div>
+              <div style={{ color: '#FFD700', fontSize: '1.2rem', marginBottom: '6px' }}></div>
+              <div style={{ fontStyle: 'italic', color: '#4a4545ff' }}>Bästa klippningen jag fått! Supernöjd med resultatet och bemötandet.</div>
+              <div style={{ marginTop: '8px', color: '#888', fontSize: '0.95em' }}> Erik S.</div>
             </div>
             <div className="review-card" style={{
-              background: "#fff",
-              borderRadius: "10px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
-              padding: "18px 22px",
-              maxWidth: "320px",
-              minWidth: "220px"
+              background: '#fff',
+              borderRadius: '10px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+              padding: '18px 22px',
+              maxWidth: '320px',
+              minWidth: '220px',
             }}>
-              <div style={{ color: "#FFD700", fontSize: "1.2rem", marginBottom: "6px" }}>★★★★★</div>
-              <div style={{ fontStyle: "italic", color: "#333" }}>“Grym service och faden var 10/10”</div>
-              <div style={{ marginTop: "8px", color: "#888", fontSize: "0.95em" }}>– Poul D.</div>
+              <div style={{ color: '#FFD700', fontSize: '1.2rem', marginBottom: '6px' }}></div>
+              <div style={{ fontStyle: 'italic', color: '#333' }}>Grym service och faden var 10/10</div>
+              <div style={{ marginTop: '8px', color: '#888', fontSize: '0.95em' }}> Poul D.</div>
             </div>
             <div className="review-card" style={{
-              background: "#fff",
-              borderRadius: "10px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
-              padding: "18px 22px",
-              maxWidth: "320px",
-              minWidth: "220px"
+              background: '#fff',
+              borderRadius: '10px',
+              boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
+              padding: '18px 22px',
+              maxWidth: '320px',
+              minWidth: '220px',
             }}>
-              <div style={{ color: "#FFD700", fontSize: "1.2rem", marginBottom: "6px" }}>★★★★★</div>
-              <div style={{ fontStyle: "italic", color: "#333" }}>“Blev positivt överraskad! Jag gick in med ganska låga förväntningar, men frisören visade sig vara riktigt duktig (speciellt på att klippa afrohår). Resultatet blev snyggt och välgjort. Rekommenderas!.”</div>
-              <div style={{ marginTop: "8px", color: "#888", fontSize: "0.95em" }}>– Dioncounda S.</div>
+              <div style={{ color: '#FFD700', fontSize: '1.2rem', marginBottom: '6px' }}></div>
+              <div style={{ fontStyle: 'italic', color: '#333' }}>Blev positivt överraskad! Jag gick in med ganska låga förväntningar, men frisören visade sig vara riktigt duktig (speciellt på att klippa afrohår). Resultatet blev snyggt och välgjort. Rekommenderas!.</div>
+              <div style={{ marginTop: '8px', color: '#888', fontSize: '0.95em' }}> Dioncounda S.</div>
             </div>
           </div>
         </div>
       </section>
-      <div style={{ display: "flex", justifyContent: "center", background: "#070707", padding: "40px 0" }}>
+
+      <div style={{ display: 'flex', justifyContent: 'center', background: '#070707', padding: '40px 0' }}>
         <iframe
-          src="https://www.google.com/maps?q=Vänsterkroken+5,+Motala,+Östergötlands+län&output=embed"
+          src="https://www.google.com/maps?q=V�nsterkroken+5,+Motala,+�sterg�tlands+l�n&output=embed"
           width="800"
           height="400"
-          style={{ border: 0, borderRadius: "16px", boxShadow: "0 4px 24px rgba(0,0,0,0.18)" }}
+          style={{ border: 0, borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.18)' }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
           title="Karta till Sharp Society">
         </iframe>
       </div>
+
       <footer>
         <p>&copy; 2025 Sharp Society - Alla rättigheter förbehållna.</p>
       </footer>
     </>
   )
 }
-function EmblaHeroCarousel() {  const heroImages = [
-    '/slideshow/1.JPG',
-    '/slideshow/2.JPG',
-    '/slideshow/3.JPG',
-    '/slideshow/4.JPG',
-    '/slideshow/5.JPG',
-  ];
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const scrollPrev = useCallback(() => emblaApi && emblaApi.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi && emblaApi.scrollNext(), [emblaApi]);
-  const scrollTo = useCallback((idx) => emblaApi && emblaApi.scrollTo(idx), [emblaApi]);
+function VideoCard({ src, title, likes }) {
+  const videoRef = useRef(null)
 
-  // Update selected index on slide change
-  const onSelect = useCallback(() => {
-    if (!emblaApi) return;
-    setSelectedIndex(emblaApi.selectedScrollSnap());
-  }, [emblaApi]);
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
 
-  // Listen for slide change
-  React.useEffect(() => {
-    if (!emblaApi) return;
-    emblaApi.on('select', onSelect);
-    onSelect();
-    return () => emblaApi.off('select', onSelect);
-  }, [emblaApi, onSelect]);
+    video.muted = true
+    video.currentTime = 0
+
+    video.play().catch(() => {})
+
+    const clipLength = 2 // sekunder
+
+    const interval = setInterval(() => {
+      if (video.currentTime >= clipLength) {
+        video.currentTime = 0
+        video.play().catch(() => {})
+      }
+    }, 150)
+
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div className="slideshow" style={{ maxWidth: 420, margin: '0 auto', position: 'relative', borderRadius: 18, boxShadow: '0 6px 32px rgba(0,0,0,0.18)' }}>
-      <div className="embla" ref={emblaRef} style={{ overflow: 'hidden', borderRadius: 18 }}>
-        <div className="embla__container" style={{ display: 'flex' }}>
-          {heroImages.map((src, idx) => (
-            <div className="embla__slide" key={src} style={{ flex: '0 0 100%', minWidth: 0, position: 'relative', height: 340 }}>
-              <img src={src} alt={`Bild ${idx + 1}`} style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 18 }} />
-            </div>
-          ))}
-        </div>
+    <div
+      className="video-card"
+      style={{
+        background: '#0d0d0d',
+        borderRadius: 14,
+        padding: 12,
+        position: 'relative',
+        overflow: 'hidden',
+      }}
+    >
+      <video
+        ref={videoRef}
+        src={src}
+        autoPlay
+        muted
+        playsInline
+        preload="auto"
+        style={{
+          width: '100%',
+          height: 280,
+          objectFit: 'cover',
+          borderRadius: 10,
+          display: 'block',
+          background: '#000',
+        }}
+      />
+
+      <div style={{ marginTop: 8, color: '#fff', fontWeight: 600 }}>
+        {title}
       </div>
-      <button className="slide-prev" aria-label="Föregående" onClick={scrollPrev} style={{ left: 20, position: 'absolute', top: '50%', transform: 'translateY(-50%)', zIndex: 3 }}>‹</button>
-      <button className="slide-next" aria-label="Nästa" onClick={scrollNext} style={{ right: 20, position: 'absolute', top: '50%', transform: 'translateY(-50%)', zIndex: 3 }}>›</button>
-      <div className="slide-dots" style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', bottom: 20, display: 'flex', gap: 12, zIndex: 3 }}>
-        {heroImages.map((_, idx) => (
-          <button
-            key={idx}
-            onClick={() => scrollTo(idx)}
-            style={{
-              width: 12,
-              height: 12,
-              borderRadius: '50%',
-              border: '2px solid var(--accent-color)',
-              background: idx === selectedIndex ? 'var(--accent-color)' : 'rgba(201, 169, 98, 0.3)',
-              transform: idx === selectedIndex ? 'scale(1.2)' : 'scale(1)',
-              transition: 'all 0.3s',
-              cursor: 'pointer',
-              boxShadow: idx === selectedIndex ? '0 0 12px rgba(201, 169, 98, 0.5)' : undefined
-            }}
-            aria-label={`Gå till bild ${idx + 1}`}
-          />
-        ))}
+
+      <div style={{ position: 'absolute', left: 16, bottom: 16, color: '#fff' }}>
+         {likes}
       </div>
     </div>
-  );
+  )
 }
+
 export default App
