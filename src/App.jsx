@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { AiFillTikTok, AiOutlineHeart, AiFillInstagram } from 'react-icons/ai'
-import { TiSocialInstagram } from "react-icons/ti";
 import './App.css'
 
 function App() {
@@ -101,9 +100,11 @@ function App() {
               </div>
               <h3>Alex Dakermanji</h3>
               <p className="staff-role">Frisör</p>
+              <div style={{ maxWidth: 360, margin: '18px auto 0' }}>
+                <PinkAccordion />
+              </div>
             </div>
           </div>
-          <p className="team-note"> <code></code> </p>
         </div>
       </section>
 
@@ -204,6 +205,32 @@ function App() {
         <p>&copy; 2025 Sharp Society - Alla rättigheter förbehållna.</p>
       </footer>
     </>
+  )
+}
+
+function PinkAccordion() {
+  const [open, setOpen] = useState(null)
+
+  return (
+    <div className="pink-accordion">
+      <button onClick={() => setOpen(open === 1 ? null : 1)}>
+        <span>Favoritcitat</span>
+        <span className="chevron">⌄</span>
+      </button>
+      {open === 1 && <div className="content">“Stay sharp, stay kind.”</div>}
+
+      <button onClick={() => setOpen(open === 2 ? null : 2)}>
+        <span>Favoritmat</span>
+        <span className="chevron">⌄</span>
+      </button>
+      {open === 2 && <div className="content">Shawarma med extra vitlökssås.</div>}
+
+      <button onClick={() => setOpen(open === 3 ? null : 3)}>
+        <span>Favoritfilm</span>
+        <span className="chevron">⌄</span>
+      </button>
+      {open === 3 && <div className="content">The Gentlemen.</div>}
+    </div>
   )
 }
 
