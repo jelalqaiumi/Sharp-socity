@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import { AiFillTikTok, AiOutlineHeart, AiFillInstagram } from 'react-icons/ai'
-import { TiSocialInstagram } from "react-icons/ti"; 
+import { TiSocialInstagram } from "react-icons/ti";
 import './App.css'
 
 function App() {
@@ -56,7 +56,6 @@ function App() {
       <section id="home" className="hero">
         <div className="hero-content">
           <div className="hero-media" style={{ flex: 1 }}>
-            <div style={{ color: 'var(--text-color)', fontWeight: 700, fontSize: 20, marginBottom: 12 }}>Videor</div>
             <div className="video-row">
               {heroVideos.map((video) => (
                 <VideoCard
@@ -137,9 +136,9 @@ function App() {
             fontSize: '1.1rem',
             lineHeight: 1.8,
           }}>
-            Sharp Society är en modern barbershop och frisering som sätter kvalitet och service i första rummet.<br />
-            Med skicklig barberare, noggrannhet i varje detalj och en avslappnad atmosfär erbjuder vi klippningar och behandlingar på högsta nivå.<br />
-            Här står kundens stil och upplevelse i fokus  alltid med ett skarpt resultat och professionell service.
+            Sharp Society föddes ur en frustration: för många barbershops nöjer sig med snabba klipp och halvdana resultat. För mig handlade det alltid om mer än så.<br />
+            Jag ville skapa en plats där hantverket står i centrum, där varje detalj räknas och där kvalitet aldrig kompromissas. Jag började smått, med vänner, familj och bekanta i stolen. Där växte förståelsen för hur mycket en riktigt bra klippning kan betyda, inte bara för utseendet, utan för självförtroendet. Med tiden formades Sharp Society till det det är idag: en barbershop byggd på passion, precision och respekt för yrket.<br />
+            Här kombineras klassisk barberartradition med modern stil och teknik. Varje kund, oavsett stil eller behov, behandlas med samma fokus och noggrannhet. Målet är alltid detsamma: att leverera skarpa resultat, bygga långsiktiga relationer och skapa en upplevelse du kan lita på, varje gång du sätter dig i stolen.
           </p>
           <div className="review-list" style={{
             display: 'flex',
@@ -190,7 +189,7 @@ function App() {
 
       <div style={{ display: 'flex', justifyContent: 'center', background: '#070707', padding: '40px 0' }}>
         <iframe
-          src="https://www.google.com/maps?q=V�nsterkroken+5,+Motala,+�sterg�tlands+l�n&output=embed"
+          src="https://www.google.com/maps?q=Vnsterkroken+5,+Motala,+Östergötlands+län&output=embed"
           width="800"
           height="400"
           style={{ border: 0, borderRadius: '16px', boxShadow: '0 4px 24px rgba(0,0,0,0.18)' }}
@@ -218,14 +217,14 @@ function VideoCard({ src, title, likes }) {
     video.muted = true
     video.currentTime = 0
 
-    video.play().catch(() => {})
+    video.play().catch(() => { })
 
     const clipLength = 2 // sekunder
 
     const interval = setInterval(() => {
       if (video.currentTime >= clipLength) {
         video.currentTime = 0
-        video.play().catch(() => {})
+        video.play().catch(() => { })
       }
     }, 150)
 
@@ -265,7 +264,7 @@ function VideoCard({ src, title, likes }) {
       </div>
 
       <div style={{ position: 'absolute', left: 16, bottom: 16, color: '#fff' }}>
-         {likes}
+        {likes}
       </div>
     </div>
   )
