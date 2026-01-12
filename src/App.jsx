@@ -22,7 +22,6 @@ function App() {
     <>
       <nav className='sidebar'>
         <div className="sidebar-logo">
-          <img src="SHARP2.JPG" alt="Sharp Society logo" className="logo-img" />
           <a
             href="https://www.tiktok.com/search?q=sharp.soc1ety&t=1767707103942"
             target="_blank"
@@ -98,7 +97,7 @@ function App() {
               <div className="staff-image">
                 <img src="/team/alex.JPG" alt="Alex Dakermanji - Frisör" />
               </div>
-              <h3>Alex Dakermanji</h3>
+              <h3>Alex Dakermandji</h3>
               <p className="staff-role">Frisör</p>
               <div style={{ maxWidth: 360, margin: '18px auto 0' }}>
                 <PinkAccordion />
@@ -202,7 +201,7 @@ function App() {
       </div>
 
       <footer>
-        <p>&copy; 2025 Sharp Society - Alla rättigheter förbehållna.</p>
+        <p>&copy; 2026 Denna hemsida är skapad utav: Jelal Qaiumi - Alla rättigheter förbehållna.</p>
       </footer>
     </>
   )

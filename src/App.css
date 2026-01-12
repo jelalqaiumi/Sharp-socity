@@ -45,11 +45,32 @@ body {
     text-align: center;
     z-index: 1000;
     border-right: 1px solid var(--accent-color);
-    overflow-y: auto;
+    overflow: hidden;
+}
+
+.sidebar::before {
+    content: '';
+    position: absolute;
+    inset: -4%;
+    background: url('/SHARP2.JPG') center/cover no-repeat;
+    transform: rotate(0deg) scale(0.9);
+    transform-origin: center;
+    filter: brightness(0.35);
+    z-index: 0;
+}
+
+.sidebar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.72), rgba(0,0,0,0.9));
+    z-index: 0;
 }
 
 .sidebar-logo {
     margin-bottom: 60px;
+    position: relative;
+    z-index: 1;
 }
 
 .sidebar-logo h2 {
@@ -67,22 +88,13 @@ body {
 }
 
 /* Logo image in sidebar */
-.sidebar-logo .logo-img {
-    display: block;
-    max-width: 140px;
-    width: 100%;
-    height: auto;
-    margin: 0 auto 8px;
-    border: 1.5px solid #fff;
-    border-radius: 0;
-    box-shadow: 0 0 8px rgba(0,0,0,0.08);
-}
-
 .nav-links {
     list-style: none;
     display: flex;
     flex-direction: column;
     gap: 30px;
+    position: relative;
+    z-index: 1;
 }
 
 .nav-links a {
@@ -225,6 +237,13 @@ body {
         gap: 12px;
         align-items: center;
         justify-content: flex-end;
+    }
+
+    .sidebar::before {
+        inset: -12%;
+        transform: rotate(0deg) scale(0.95);
+        background-position: center;
+        background-image: url('/SHARP2.JPG');
     }
 
     .hero {
@@ -453,6 +472,15 @@ body {
     .team h2,
     .booking h2 {
         font-size: 1.9rem;
+    }
+}
+
+@media (min-width: 901px) {
+    .sidebar::before {
+        inset: -2%;
+        transform: rotate(0deg) scale(0.85);
+        background-position: center;
+        background-image: url('/SHARP2.JPG');
     }
 }
 
